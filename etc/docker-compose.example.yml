@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  discord_bad_domains:
+    image: shiftinv/monitoring-discord-bad-domains
+    restart: unless-stopped
+    environment:
+      CRON_USER: 'user'
+      CRON_STRING: '4 * * * * sh -c "cd /workspace; ./update.sh"'
+      REPO_URL: ''
