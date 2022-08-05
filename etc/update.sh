@@ -1,4 +1,5 @@
-#!/bin/sh -e -o pipefail
+#!/bin/bash -e
+set -o pipefail
 
 # fetch upstream
 if [ -d repo ]; then

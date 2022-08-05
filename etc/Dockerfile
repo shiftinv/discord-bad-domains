@@ -1,6 +1,6 @@
 FROM shiftinv/cron
 
-RUN apk add --no-cache curl git openssh jq
+RUN apk add --no-cache curl git openssh jq bash
 
 ARG GIT_COMMIT
 RUN [ -n "$GIT_COMMIT" ] || { echo "\$GIT_COMMIT is not set"; exit 1; }

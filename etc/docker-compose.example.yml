@@ -6,5 +6,5 @@ services:
     restart: unless-stopped
     environment:
       CRON_USER: 'user'
-      CRON_STRING: '4 * * * * sh -c "cd /workspace; ./update.sh"'
+      CRON_STRING: '4 * * * * bash -c "cd /workspace; ./update.sh"'
       REPO_URL: ''
