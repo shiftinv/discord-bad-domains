@@ -13,6 +13,7 @@ fi
 
 # get list of hashes
 curl -f https://cdn.discordapp.com/bad-domains/hashes.json | jq -r 'sort | .[]' > hashes.txt
+curl -f https://cdn.discordapp.com/bad-domains/updated_hashes.json | jq -r 'sort | .[]' > updated_hashes.txt
 
 # commit + push
 if [ -n "$(git status --porcelain)" ]; then
