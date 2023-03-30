@@ -12,9 +12,18 @@ else
     cd repo
 fi
 
+function fetch_items() {
+    items="$(curl -f "$1" | jq -r 'sort | .[]')"
+    if [ -z "$items" ]; then
+        echo "Got empty list, something probably went wrong." >&2
+        exit 1
+    fi
+    echo "$items"
+}
+
 # get list of hashes
-curl -f https://cdn.discordapp.com/bad-domains/hashes.json | jq -r 'sort | .[]' > hashes.txt
-curl -f https://cdn.discordapp.com/bad-domains/updated_hashes.json | jq -r 'sort | .[]' > updated_hashes.txt
+fetch_items https://cdn.discordapp.com/bad-domains/hashes.json > hashes.txt
+fetch_items https://cdn.discordapp.com/bad-domains/updated_hashes.json > updated_hashes.txt
 
 # commit + push
 if [ -n "$(git status --porcelain)" ]; then
